@@ -1,0 +1,58 @@
+﻿@page "{id:int}"
+@model JekirdekCase.Pages.Customers.DeleteModel
+@{
+    ViewData["Title"] = "Müşteri Sil";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Customer == null && string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-warning mt-3">Silinecek müşteri bilgileri yükleniyor veya bulunamadı...</div>
+    <p><a asp-page="./Index">Müşteri Listesine Dön</a></p>
+}
+else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger mt-3" role="alert">@Model.ErrorMessage</div>
+    <p><a asp-page="./Index">Müşteri Listesine Dön</a></p>
+}
+else if (Model.Customer != null)
+{
+    <h3>Bu müşteriyi silmek istediğinizden emin misiniz?</h3>
+    <div>
+        <h4>@Model.Customer.FullName</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                ID
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Customer.Id
+            </dd>
+            <dt class="col-sm-3">
+                E-posta
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Customer.Email
+            </dd>
+            <dt class="col-sm-3">
+                Bölge
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Customer.Region
+            </dd>
+            <dt class="col-sm-3">
+                Kayıt Tarihi
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Customer.RegistrationDate.ToShortDateString()
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Customer.Id" />
+            <button type="submit" class="btn btn-danger">Evet, Sil</button>
+            <a asp-page="./Index" class="btn btn-secondary ms-2">Hayır, İptal Et</a>
+        </form>
+    </div>
+}

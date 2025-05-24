@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Ana Sayfa - JekirdekCase CRM";
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="display-4">JekirdekCase CRM Projesi</h1>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Geliştirici Bilgisi</h4>
+        <p>Bu web uygulaması <strong>Furkan Bektaş</strong> tarafından <strong>Jekirdek Firması</strong> için geliştirilmiştir.</p>
+    </div>
+
+    <hr class="my-4">
+
+    <div>
+        <h2>Proje Özeti ve Kullanılan Teknolojiler</h2>
+        <p>
+            Bu proje, müşteri verilerinin yönetilmesini sağlayan temel bir Müşteri İlişkileri Yönetimi (CRM) sistemi olarak tasarlanmıştır.
+            Kullanıcıların kimlik doğrulaması ve rol tabanlı yetkilendirme (Admin/User) özelliklerini içerir. Müşteriler listelenebilir, filtrelenebilir ve
+            CRUD (Oluşturma, Okuma, Güncelleme, Silme) işlemleri gerçekleştirilebilir.
+        </p>
+
+        <h4>Kullanılan Teknolojiler:</h4>
+        <ul>
+            <li>
+                <strong>Backend:</strong>
+                <ul>
+                    <li>.NET 8 (ASP.NET Core), C#</li>
+                    <li>RESTful API Tasarımı</li>
+                    <li>Entity Framework Core (PostgreSQL için ORM)</li>
+                    <li>JWT (JSON Web Tokens) ile Kimlik Doğrulama</li>
+                    <li>Rol Tabanlı Yetkilendirme</li>
+                    <li>ASP.NET Core Identity PasswordHasher (Güvenli Şifreleme)</li>
+                    <li>Katmanlı Mimari (Repository Pattern, Servis Katmanı)</li>
+                    <li>DTO'lar (Data Transfer Objects) ve AutoMapper ile Veri Transferi</li>
+                    <li><code>ILogger</code> ile Loglama</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Veritabanı:</strong>
+                <ul>
+                    <li>PostgreSQL</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Frontend:</strong>
+                <ul>
+                    <li>ASP.NET Core Razor Pages</li>
+                    <li>Cookie Tabanlı Oturum Yönetimi (Razor Pages tarafında)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Geliştirme Süreci:</h4>
+        <p>
+            İlk olarak veritabanı şeması ve entity'ler tasarlanmış, ardından Repository ve Servis katmanları oluşturularak backend API'leri (müşteri CRUD, kullanıcı kayıt ve giriş) implemente edilmiştir. Kimlik doğrulama için JWT, şifreleme için ASP.NET Core Identity PasswordHasher kullanılmıştır. Rol tabanlı yetkilendirme ile farklı kullanıcı tiplerinin (Admin, User) yetkileri belirlenmiştir. Son aşamada ise ASP.NET Core Razor Pages kullanılarak kullanıcı arayüzü oluşturulmuş, backend API'leri ile entegrasyon sağlanmış ve temel CRM işlevleri (müşteri listeleme, filtreleme, ekleme, düzenleme, silme) kullanıcıya sunulmuştur.
+        </p>
+    </div>
+</div>

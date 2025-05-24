@@ -1,0 +1,66 @@
+﻿@page "{id:int}"
+@model JekirdekCase.Pages.Customers.EditModel
+@{
+    ViewData["Title"] = "Müşteri Düzenle";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Müşteri Bilgileri</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @if (Model.CustomerInput == null)
+        {
+            <div class="alert alert-warning">Düzenlenecek müşteri bulunamadı.</div>
+            <p><a asp-page="./Index">Müşteri Listesine Dön</a></p>
+        }
+        else
+        {
+            <form method="post">
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+                }
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <input type="hidden" asp-for="CustomerInput.Id" />
+
+                <div class="form-floating mb-3">
+                    <input asp-for="CustomerInput.FirstName" class="form-control" placeholder="Adı" />
+                    <label asp-for="CustomerInput.FirstName"></label>
+                    <span asp-validation-for="CustomerInput.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="CustomerInput.LastName" class="form-control" placeholder="Soyadı" />
+                    <label asp-for="CustomerInput.LastName"></label>
+                    <span asp-validation-for="CustomerInput.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="CustomerInput.Email" class="form-control" placeholder="E-posta" />
+                    <label asp-for="CustomerInput.Email"></label>
+                    <span asp-validation-for="CustomerInput.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="CustomerInput.Region" class="form-control" placeholder="Bölge" />
+                    <label asp-for="CustomerInput.Region"></label>
+                    <span asp-validation-for="CustomerInput.Region" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="CustomerInput.RegistrationDate" type="date" class="form-control" />
+                    <label asp-for="CustomerInput.RegistrationDate"></label>
+                    <span asp-validation-for="CustomerInput.RegistrationDate" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+                <a asp-page="./Index" class="btn btn-secondary ms-2">İptal</a>
+            </form>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
