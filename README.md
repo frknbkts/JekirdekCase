@@ -1,13 +1,7 @@
-# JekirdekCase CRM Projesi
+# Projesi
 
 Bu proje, müþteri verilerinin yönetilmesini saðlayan temel bir Müþteri Ýliþkileri Yönetimi (CRM) sistemi olarak tasarlanmýþtýr.  
 Kullanýcýlarýn kimlik doðrulamasý ve rol tabanlý yetkilendirme (Admin/User) özelliklerini içerir. Müþteriler listelenebilir, filtrelenebilir ve CRUD (Oluþturma, Okuma, Güncelleme, Silme) iþlemleri gerçekleþtirilebilir.
-
----
-
-## Geliþtirici Bilgisi
-
-Bu web uygulamasý **Furkan Bektaþ** tarafýndan **Jekirdek Firmasý** için geliþtirilmiþtir.
 
 ---
 
