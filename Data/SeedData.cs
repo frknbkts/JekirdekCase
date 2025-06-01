@@ -58,7 +58,7 @@ namespace JekirdekCase.Data
                 }
                 if (!context.Users.Any(u => u.Username == "admin"))
                 {
-                    var passwordHasher = new PasswordHasher<User>(); // User modelimiz için bir hasher oluştur
+                    var passwordHasher = new PasswordHasher<User>(); // user icin hasher olusturuoz
                     var adminUser = new User
                     {
                         Username = "admin",

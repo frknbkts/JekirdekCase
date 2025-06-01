@@ -18,7 +18,7 @@ namespace JekirdekCase.Repositories
             DateTime? registrationDateTo,
             string? region)
         {
-            var query = _dbSet.AsQueryable(); // _dbSet, base class'tan geliyor
+            var query = _dbSet.AsQueryable(); 
 
             if (!string.IsNullOrWhiteSpace(name))
             {

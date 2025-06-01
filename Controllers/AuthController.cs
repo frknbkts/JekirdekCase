@@ -88,7 +88,7 @@ namespace JekirdekCase.Controllers
                 token: token,
                 expiration: tokenExpiration,
                 username: user?.Username ?? loginDto.Username,
-                role: user?.Role ?? "User" // Rolü user nesnesinden al
+                role: user?.Role ?? "User" // rolü user nesnesinden alioz
             ));
         }
     }

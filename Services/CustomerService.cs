@@ -12,13 +12,13 @@ namespace JekirdekCase.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper; // AutoMapper için
+        private readonly IMapper _mapper; 
         private readonly ILogger<CustomerService> _logger;
 
         public CustomerService(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerService> logger)
         {
             _customerRepository = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)); // Mapper'ı enjekte et
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)); 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -74,7 +74,6 @@ namespace JekirdekCase.Services
         {
             _logger.LogInformation("Fetching all customers.");
             var customers = await _customerRepository.GetAllAsync();
-            // Entity listesinden DTO listesine dönüşüm
             return _mapper.Map<IEnumerable<CustomerDto>>(customers);
         }
 
@@ -84,7 +83,6 @@ namespace JekirdekCase.Services
                 return null;
             _logger.LogInformation("Fetching customer by email: {Email}", email);
             var customer = await _customerRepository.GetByEmailAsync(email);
-            // Entity'den DTO'ya dönüşüm
             return customer == null ? null : _mapper.Map<CustomerDto>(customer);
         }
 
@@ -92,7 +90,6 @@ namespace JekirdekCase.Services
         {
             _logger.LogInformation("Fetching customer by ID: {CustomerId}", id);
             var customer = await _customerRepository.GetByIdAsync(id);
-            // Entity'den DTO'ya dönüşüm
             return customer == null ? null : _mapper.Map<CustomerDto>(customer);
         }
 
@@ -119,7 +116,7 @@ namespace JekirdekCase.Services
                 return false;
             }
 
-            // Email benzersizliğini kontrol et
+            // email uniq kontrolu
             if (existingCustomer.Email.ToLower() != updateCustomerDto.Email.ToLower())
             {
                 var customerWithNewEmail = await _customerRepository.GetByEmailAsync(updateCustomerDto.Email);
@@ -134,7 +131,6 @@ namespace JekirdekCase.Services
             // DTO'dan var olan Entity'ye değerleri map'le
             _mapper.Map(updateCustomerDto, existingCustomer);
 
-            // RegistrationDate'in UTC olduğundan emin olalım
             if (existingCustomer.RegistrationDate.Kind != DateTimeKind.Utc)
             {
                 existingCustomer.RegistrationDate = DateTime.SpecifyKind(existingCustomer.RegistrationDate, DateTimeKind.Utc);

@@ -9,14 +9,14 @@ namespace JekirdekCase.Dtos
         public string Username { get; set; }
 
         [Required]
-        [EmailAddress] // Email formatını da doğrulayalım
-        public string Email { get; set; } // YENİ EKLENDİ
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 6)] // Şifre uzunluğu gibi kurallar eklenebilir
+        [StringLength(50, MinimumLength = 6)]
         public string Password { get; set; }
 
         [Required]
-        public string Role { get; set; } // Örn: "User", "Admin"
+        public string Role { get; set; }
     }
 }
